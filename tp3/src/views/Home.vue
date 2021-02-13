@@ -1,18 +1,33 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1 class="d-flex justify-content-center">5 postres para disfrutar en cualquier epoca del año</h1>
+    <Carrousel/>
+    <Footer/>
+    <!-- <footer>
+      <a class="navbar-brand fixed-bottom a">
+        <img
+          src="../assets/gmail.png"
+          width="20"
+          height="20"
+          alt=""
+          loading="lazy"
+        />
+        ulises.cortes@institutoamemt.edu.ar
+      </a>
+    </footer> -->
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import Carrousel from '../components/Carrousel.vue'
+import Footer from '../components/Footer'
 
 export default {
   name: 'Home',
   components: {
-    HelloWorld
+    Carrousel,
+    Footer
   }
 }
 </script>
