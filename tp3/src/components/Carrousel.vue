@@ -3,35 +3,35 @@
     <div class="carousel-inner p">
       <div class="carousel-item active">
         <img
-          src="../assets/chocotorta.jpg"
+          src="../assets/IMAGENES/chocotorta.jpg"
           class="d-block w-50 rounded mx-auto img-fluid img-thumbnail"
           alt="Chocotorta"
         />
       </div>
       <div class="carousel-item">
         <img
-          src="../assets/Flan.jpg"
+          src="../assets/IMAGENES/Flan.jpg"
           class="d-block w-50 rounded mx-auto img-fluid img-thumbnail"
           alt="Flan"
         />
       </div>
       <div class="carousel-item">
         <img
-          src="../assets/isla flotante.jpg"
+          src="../assets/IMAGENES/isla flotante.jpg"
           class="d-block w-50 rounded mx-auto img-fluid img-thumbnail"
           alt="Isla flotante"
         />
       </div>
       <div class="carousel-item">
         <img
-          src="../assets/pastafrola.jpg"
+          src="../assets/IMAGENES/pastafrola.jpg"
           class="d-block w-50 rounded mx-auto img-fluid img-thumbnail"
           alt="Pastafrola"
         />
       </div>
       <div class="carousel-item">
         <img
-          src="../assets/Tiramisu.jpg"
+          src="../assets/IMAGENES/Tiramisu.jpg"
           class="d-block w-50 rounded mx-auto img-fluid img-thumbnail"
           alt="Tiramisu"
         />

@@ -12,20 +12,15 @@
         </td>
       </tr>
     </table>
-    <Footer />
   </div>
 </template>
 <script>
-import Footer from '../components/Footer'
 export default {
   data () {
     return {
       desserts: [],
       header: ['Postre', 'Tiempo de preparado', 'Cantidad de ingredientes']
     }
-  },
-  components: {
-    Footer
   },
   mounted () {
     this.getDesserts()

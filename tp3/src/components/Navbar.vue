@@ -14,10 +14,14 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="">Tiramisu</a>
+          <router-link to="/">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </router-link>
         </li>
         <li class="nav-item active">
-          <router-link to="/chocotorta" class="nav-link" href="">Chocotorta</router-link>
+          <router-link to="/tabla">
+          <a class="nav-link" href="#">Tabla de Postres</a>
+          </router-link>
         </li>
         <li class="nav-item dropdown active">
           <a
@@ -32,10 +36,21 @@
             Más recetas
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="">Flan</a>
-            <a class="dropdown-item" href="">Isla flotante</a>
-            <router-link to="/pastafrola" class="dropdown-item" href="">Pastafrola</router-link>
-            <router-link to="/tabla" class="dropdown-item" href="">Tabla de postres</router-link>
+            <router-link to="/recetas/chocotorta">
+            <a class="dropdown-item" href="#">Chocotorta</a>
+            </router-link>
+            <router-link to="/recetas/flan">
+            <a class="dropdown-item" href="#">Flan</a>
+            </router-link>
+            <router-link to="/recetas/islaflotante">
+            <a class="dropdown-item" href="#">Isla Flotante</a>
+            </router-link>
+            <router-link to="/recetas/pastafrola">
+            <a class="dropdown-item" href="#">Pastafrola</a>
+            </router-link>
+            <router-link to="/recetas/tiramisu">
+            <a class="dropdown-item" href="#">Tiramisu</a>
+            </router-link>
           </div>
         </li>
         <!-- <li class="nav-item active">
@@ -44,13 +59,7 @@
       </ul>
     </div>
     <router-link to="/" class="navbar-brand">
-      <img src="../assets/logoppal.jpg" width="50" height="50" alt="" loading="lazy" />
+      <img src="../assets/IMAGENES/logoppal.jpg" width="50" height="50" alt="" loading="lazy" />
     </router-link>
   </nav>
 </template>
-<style lang="css">
-  #nav {
-    height: 55px;
-    padding: 5px;
-  }
-</style>
