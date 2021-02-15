@@ -9,7 +9,10 @@
           alt=""
           loading="lazy"
         />
-        ulises.cortes@institutoamemt.edu.ar
+        <div id="emails">
+          <a>ulises.cortes@institutoamemt.edu.ar</a>
+          <a>octaviodesiate@institutoamemt.edu.ar</a>
+        </div>
       </a>
     </footer>
   </div>
@@ -21,5 +24,14 @@ export default {}
     #size {
         font-size: smaller;
         color: black;
+        display: flex;
+        flex-direction: row;
+    }
+    #emails {
+      display: flex;
+      flex-direction: column;
+    }
+    img {
+      margin: 7px;
     }
 </style>
