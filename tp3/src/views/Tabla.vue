@@ -6,38 +6,26 @@
             {{ a }}
         </th>
       </thead>
-      <tr v-for="i in desserts" :key="i.id">
+      <tr v-for="i in this.desserts" :key="i.id">
         <td v-for="j in i" :key="j">
           {{ j }}
         </td>
       </tr>
     </table>
+    <div class="custom-control custom-switch">
+      <input type="checkbox" class="custom-control-input" id="customSwitch1">
+      <label for="customSwitch1" class="custom-control-label">Mostrar/Ocultar filtro</label>
+    </div>
   </div>
 </template>
 <script>
+import { mapActions, mapState } from 'vuex'
 export default {
-  data () {
-    return {
-      desserts: [],
-      header: ['Postre', 'Tiempo de preparado', 'Cantidad de ingredientes']
-    }
-  },
+  computed: mapState(['desserts', 'header']),
   mounted () {
     this.getDesserts()
   },
-  methods: {
-    getDesserts () {
-      fetch('https://5fcba09751f70e00161f1c5b.mockapi.io/postres')
-        .then((res) => res.json())
-        .then((elementos) => {
-          this.desserts = elementos
-          for (this.i in elementos) {
-            delete elementos[this.i].id
-          }
-        })
-        .catch((error) => console.log(error))
-    }
-  }
+  methods: mapActions(['getDesserts'])
 }
 </script>
 <style lang="css">
