@@ -2,8 +2,12 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import About from '../views/About.vue'
-import Chocotorta from '../views/Chocotorta.vue'
-import Pastafrola from '../views/Pastafrola.vue'
+import recetas from '../views/recetas.vue'
+import Flan from '../views/postres/Flan.vue'
+import Tiramisu from '../views/postres/Tiramisu.vue'
+import Chocotorta from '../views/postres/Chocotorta.vue'
+import Pastafrola from '../views/postres/Pastafrola.vue'
+import Islaflotante from '../views/postres/Islaflotante.vue'
 import Tabla from '../views/Tabla.vue'
 
 Vue.use(VueRouter)
@@ -20,14 +24,31 @@ const routes = [
     component: About
   },
   {
-    path: '/chocotorta',
-    name: 'Chocotorta',
-    component: Chocotorta
-  },
-  {
-    path: '/pastafrola',
-    name: 'Pastafrola',
-    component: Pastafrola
+    path: '/recetas',
+    name: 'Recetas',
+    component: recetas,
+    children: [
+      {
+        path: 'chocotorta',
+        component: Chocotorta
+      },
+      {
+        path: 'pastafrola',
+        component: Pastafrola
+      },
+      {
+        path: 'flan',
+        component: Flan
+      },
+      {
+        path: 'tiramisu',
+        component: Tiramisu
+      },
+      {
+        path: 'islaflotante',
+        component: Islaflotante
+      }
+    ]
   },
   {
     path: '/tabla',

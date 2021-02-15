@@ -16,16 +16,11 @@
       <input type="checkbox" class="custom-control-input" id="customSwitch1">
       <label for="customSwitch1" class="custom-control-label">Mostrar/Ocultar filtro</label>
     </div>
-    <Footer />
   </div>
 </template>
 <script>
-import Footer from '../components/Footer'
 import { mapActions, mapState } from 'vuex'
 export default {
-  components: {
-    Footer
-  },
   computed: mapState(['desserts', 'header']),
   mounted () {
     this.getDesserts()
