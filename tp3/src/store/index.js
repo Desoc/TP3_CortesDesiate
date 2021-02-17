@@ -6,11 +6,21 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     desserts: [],
-    header: ['Postre', 'Tiempo de preparado', 'Cantidad de ingredientes']
+    dessertsSf: [],
+    dessertsQ: [],
+    dessertsT: [],
+    header: ['Postre', 'Tiempo de preparado', 'Cantidad de ingredientes'],
+    show: false
   },
   mutations: {
     traerPostres (state, elementos) {
-      state.desserts = elementos
+      setTimeout(function () {
+        state.desserts = elementos
+        state.dessertsSf = elementos
+        state.dessertsQ = state.desserts.filter(el => el.cantidadDeIngredientes <= 5)
+        state.dessertsT = state.desserts.filter(el => parseInt(el.tiempoDePreparado) >= parseInt('70 minutos'))
+        state.show = true
+      }, 2000)
     }
   },
   actions: {
