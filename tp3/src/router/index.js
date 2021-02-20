@@ -8,6 +8,7 @@ import Tiramisu from '../views/postres/Tiramisu.vue'
 import Chocotorta from '../views/postres/Chocotorta.vue'
 import Pastafrola from '../views/postres/Pastafrola.vue'
 import Islaflotante from '../views/postres/Islaflotante.vue'
+import Login from '../views/Login.vue'
 import Tabla from '../views/Tabla.vue'
 
 Vue.use(VueRouter)
@@ -54,6 +55,11 @@ const routes = [
     path: '/tabla',
     name: 'Tabla',
     component: Tabla
+  },
+  {
+    path: '/auth',
+    name: 'auth',
+    component: Login
   }
 ]
 

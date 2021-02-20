@@ -6,11 +6,13 @@
             {{ a }}
         </th>
       </thead>
-      <tr v-for="i in this.desserts" :key="i.id">
-        <td v-for="j in i" :key="j">
-          {{ j }}
-        </td>
-      </tr>
+      <tbody>
+        <tr v-for="i in this.desserts" :key="i.id">
+          <td v-for="j in i" :key="j">
+            {{ j }}
+          </td>
+        </tr>
+      </tbody>
     </table>
     <div class="custom-control custom-switch">
       <input type="checkbox" class="custom-control-input" id="customSwitch1">
