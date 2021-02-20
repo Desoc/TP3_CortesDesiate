@@ -56,6 +56,16 @@
         <!-- <li class="nav-item active">
             <a class="nav-link" href="/home/uli/Documentos/Front/3er TP/HTML/ecom.html">Market</a>
           </li> -->
+        <li v-if="!isLogged">
+          <router-link to="/auth" type="button" class="btn btn-outline-success">LOGIN
+          <i class="fas fa-sign-in-alt"></i>
+          </router-link>
+        </li>
+        <li v-if="isLogged">
+          <a @click="logout" type="button" class="btn btn-outline-danger">LOGOUT
+          <i class="fas fa-sign-out-alt"></i>
+          </a>
+        </li>
       </ul>
     </div>
     <router-link to="/" class="navbar-brand">
@@ -63,3 +73,19 @@
     </router-link>
   </nav>
 </template>
+
+<script>
+export default {
+  computed: {
+    isLogged () {
+      return this.$store.getters.isLogged
+    }
+  },
+  methods: {
+    logout () {
+      this.$store.dispatch('logout')
+      this.$router.replace('/')
+    }
+  }
+}
+</script>

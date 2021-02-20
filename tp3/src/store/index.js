@@ -11,6 +11,11 @@ export default new Vuex.Store({
     dessertsT: [],
     header: ['Postre', 'Tiempo de preparado', 'Cantidad de ingredientes'],
     show: false,
+    hasErrors: false,
+    user: {
+      token: null,
+      userId: null
+    },
     inpuPostre: '',
     inpuTdp: '',
     inpuCdi: '',
@@ -33,6 +38,29 @@ export default new Vuex.Store({
         }
         console.log(state.ids)
       }, 2000)
+    },
+    setUser (state, payload) {
+      state.user = {
+        token: payload.token,
+        userId: payload.userId
+      }
+    },
+    clearUser (state) {
+      state.user = {}
+    },
+    setErrorStatus (state, payload) {
+      state.hasErrors = payload.hasErrors
+    }
+  },
+  getters: {
+    getToken (state) {
+      return state.user.token
+    },
+    isLogged (state) {
+      return !!state.user.token
+    },
+    getErrorStatus (state) {
+      return state.hasErrors
     }
   },
   actions: {
@@ -43,6 +71,54 @@ export default new Vuex.Store({
           commit('traerPostres', elementos)
         })
         .catch((error) => console.log(error))
+    },
+    signUp ({ commit }, payload) {
+      fetch('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBJZ2TfUrlstScG3ouR4-gyoEl5DKZw0vU', {
+        method: 'POST',
+        body: JSON.stringify({
+          email: payload.email,
+          password: payload.password,
+          returnSecureToken: true
+        })
+      })
+        .then(res => res.json())
+        .then(data => commit('setUser', {
+          token: data.idToken,
+          userId: data.localId
+        }))
+    },
+    login ({ commit }, payload) {
+      commit('setErrorStatus', { error: false })
+      fetch('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBJZ2TfUrlstScG3ouR4-gyoEl5DKZw0vU', {
+        method: 'POST',
+        body: JSON.stringify({
+          email: payload.email,
+          password: payload.password
+        })
+      })
+        .then((resp) => {
+          if (!resp.ok) {
+            throw Error(resp.statusCode)
+          } else {
+            return resp.json()
+          }
+        })
+        .then(data => {
+          localStorage.setItem('token', data.idToken)
+          localStorage.setItem('userId', data.localId)
+          commit('setUser', {
+            token: data.idToken,
+            userId: data.localId
+          })
+        })
+        .catch(err => {
+          commit('setErrorStatus', { hasErrors: err })
+        })
+    },
+    logout ({ commit }) {
+      commit('clearUser')
+      localStorage.setItem('token', null)
+      localStorage.setItem('userId', null)
     },
     addDessert: function (context, payload) {
       fetch('https://5fcba09751f70e00161f1c5b.mockapi.io/postres', {
@@ -55,6 +131,5 @@ export default new Vuex.Store({
           location.reload()
         })
         .catch((error) => console(error))
-    }
   }
 })
