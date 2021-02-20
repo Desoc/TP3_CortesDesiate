@@ -15,16 +15,28 @@ export default new Vuex.Store({
     user: {
       token: null,
       userId: null
-    }
+    },
+    inpuPostre: '',
+    inpuTdp: '',
+    inpuCdi: '',
+    newDessert: [],
+    ids: []
   },
   mutations: {
     traerPostres (state, elementos) {
       setTimeout(function () {
+        for (this.l in elementos) {
+          state.ids.push(elementos[this.l].id)
+        }
         state.desserts = elementos
         state.dessertsSf = elementos
         state.dessertsQ = state.desserts.filter(el => el.cantidadDeIngredientes <= 5)
         state.dessertsT = state.desserts.filter(el => parseInt(el.tiempoDePreparado) >= parseInt('70 minutos'))
         state.show = true
+        for (this.i in elementos) {
+          delete elementos[this.i].id
+        }
+        console.log(state.ids)
       }, 2000)
     },
     setUser (state, payload) {
@@ -57,9 +69,6 @@ export default new Vuex.Store({
         .then((res) => res.json())
         .then((elementos) => {
           commit('traerPostres', elementos)
-          for (this.i in elementos) {
-            delete elementos[this.i].id
-          }
         })
         .catch((error) => console.log(error))
     },
@@ -110,6 +119,17 @@ export default new Vuex.Store({
       commit('clearUser')
       localStorage.setItem('token', null)
       localStorage.setItem('userId', null)
-    }
+    },
+    addDessert: function (context, payload) {
+      fetch('https://5fcba09751f70e00161f1c5b.mockapi.io/postres', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+        .then((res) => {
+          console.log('Postre agregado', res)
+          location.reload()
+        })
+        .catch((error) => console(error))
   }
 })
