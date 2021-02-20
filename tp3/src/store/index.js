@@ -10,7 +10,12 @@ export default new Vuex.Store({
     dessertsQ: [],
     dessertsT: [],
     header: ['Postre', 'Tiempo de preparado', 'Cantidad de ingredientes'],
-    show: false
+    show: false,
+    hasErrors: false,
+    user: {
+      token: null,
+      userId: null
+    }
   },
   mutations: {
     traerPostres (state, elementos) {
@@ -21,6 +26,29 @@ export default new Vuex.Store({
         state.dessertsT = state.desserts.filter(el => parseInt(el.tiempoDePreparado) >= parseInt('70 minutos'))
         state.show = true
       }, 2000)
+    },
+    setUser (state, payload) {
+      state.user = {
+        token: payload.token,
+        userId: payload.userId
+      }
+    },
+    clearUser (state) {
+      state.user = {}
+    },
+    setErrorStatus (state, payload) {
+      state.hasErrors = payload.hasErrors
+    }
+  },
+  getters: {
+    getToken (state) {
+      return state.user.token
+    },
+    isLogged (state) {
+      return !!state.user.token
+    },
+    getErrorStatus (state) {
+      return state.hasErrors
     }
   },
   actions: {
@@ -34,6 +62,54 @@ export default new Vuex.Store({
           }
         })
         .catch((error) => console.log(error))
+    },
+    signUp ({ commit }, payload) {
+      fetch('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBJZ2TfUrlstScG3ouR4-gyoEl5DKZw0vU', {
+        method: 'POST',
+        body: JSON.stringify({
+          email: payload.email,
+          password: payload.password,
+          returnSecureToken: true
+        })
+      })
+        .then(res => res.json())
+        .then(data => commit('setUser', {
+          token: data.idToken,
+          userId: data.localId
+        }))
+    },
+    login ({ commit }, payload) {
+      commit('setErrorStatus', { error: false })
+      fetch('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBJZ2TfUrlstScG3ouR4-gyoEl5DKZw0vU', {
+        method: 'POST',
+        body: JSON.stringify({
+          email: payload.email,
+          password: payload.password
+        })
+      })
+        .then((resp) => {
+          if (!resp.ok) {
+            throw Error(resp.statusCode)
+          } else {
+            return resp.json()
+          }
+        })
+        .then(data => {
+          localStorage.setItem('token', data.idToken)
+          localStorage.setItem('userId', data.localId)
+          commit('setUser', {
+            token: data.idToken,
+            userId: data.localId
+          })
+        })
+        .catch(err => {
+          commit('setErrorStatus', { hasErrors: err })
+        })
+    },
+    logout ({ commit }) {
+      commit('clearUser')
+      localStorage.setItem('token', null)
+      localStorage.setItem('userId', null)
     }
   }
 })
