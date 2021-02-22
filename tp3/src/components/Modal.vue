@@ -21,25 +21,24 @@
             </button>
           </div>
           <div class="modal-body">
-            <div id="flexi">
+            <form id="flexi" method="addDessert">
               <input type="text" v-model="newD.postre">
               <label for="">Postre</label>
               <input type="text" v-model="newD.tiempoDePreparado">
               <label for="">Tiempo de preparado</label>
               <input type="text" v-model="newD.cantidadDeIngredientes">
               <label for="">Cantidad de ingredientes</label>
-              <slot></slot>
+              <button type="submit" class="btn btn-primary" data-dismiss="modal" @click="la">Guardar nuevo postre</button>
+            </form>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Cerrar
+              </button>
             </div>
-          </div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-dismiss="modal"
-            >
-              Cerrar
-            </button>
-            <button type="button" class="btn btn-primary" @click="la">Guardar nuevo postre</button>
           </div>
         </div>
       </div>
@@ -59,9 +58,10 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['addDessert']),
+    ...mapActions(['addDessert', 'getDesserts']),
     la () {
       this.addDessert(this.newD)
+      this.getDesserts()
     }
   }
 }

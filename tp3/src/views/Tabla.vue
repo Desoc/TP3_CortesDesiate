@@ -8,11 +8,13 @@
         </th>
       </thead>
       <tr v-for="i in desserts" :key="i.id">
-        <td v-for="j in i" :key="j">
-          {{ j }}
+        <td v-for="a in i" :key="a">
+          {{ a }}
         </td>
-        <ModalEdit/>
-        <button id="edibtn" class="btn btn-outline-success btn-light btn-sm" data-toggle="modal" data-target="#modalEdit">Editar</button>
+        <ModalEdit
+          :idModal="i.id"
+        />
+        <button id="edibtn" class="btn btn-outline-success btn-light btn-sm" data-toggle="modal" data-target="#modalEdit" @click="consultarPostre(i.id)">Editar</button>
       </tr>
     </table>
     <Modal/>
@@ -57,7 +59,7 @@ export default {
     this.getDesserts()
   },
   methods: {
-    ...mapActions(['getDesserts']),
+    ...mapActions(['getDesserts', 'dessertWithId']),
     mostrar () {
       this.appear = !this.appear
     },
@@ -81,6 +83,10 @@ export default {
     },
     cambio () {
       this.pa = !this.pa
+    },
+    consultarPostre (id) {
+      this.$store.state.dessertId = id
+      this.dessertWithId(id)
     }
   }
 }
