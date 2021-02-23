@@ -2,7 +2,7 @@
   <div>
     <div
       class="modal fade"
-      id="modalEdit"
+      id="modalRemove"
       tabindex="-1"
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
@@ -10,7 +10,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Editar un postre</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Eleminar un postre</h5>
             <button
               type="button"
               class="close"
@@ -21,17 +21,10 @@
             </button>
           </div>
           <div class="modal-body">
-            <div id="modalE" method="editDessert">
-              <input type="text" v-model="postreAEditar.postre"/>
-              <label for="">Postre</label>
-              <input type="text" v-model="postreAEditar.tiempoDePreparado"/>
-              <label for="">Tiempo de preparado</label>
-              <input type="text" v-model="postreAEditar.cantidadDeIngredientes"/>
-              <label for="">Cantidad de ingredientes</label>
-              <button type="button" class="btn btn-primary" data-dismiss="modal" @click="edith">Editar postre</button>
-            </div>
+            <p>Se va a eliminar un postre, desea continuar?</p>
           </div>
           <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal" @click="deletes">Borrar postre</button>
             <button
               type="button"
               class="btn btn-secondary"
@@ -52,9 +45,9 @@ export default {
     ...mapState(['postreAEditar'])
   },
   methods: {
-    ...mapActions(['editDessert']),
-    edith () {
-      this.editDessert({
+    ...mapActions(['deletePostre']),
+    deletes () {
+      this.deletePostre({
         postre: this.postreAEditar.postre,
         tiempoDePreparado: this.postreAEditar.tiempoDePreparado,
         cantidadDeIngredientes: this.postreAEditar.cantidadDeIngredientes

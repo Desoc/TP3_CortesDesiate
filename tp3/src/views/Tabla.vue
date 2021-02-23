@@ -15,14 +15,25 @@
           <ModalEdit
             :idModal="i.id"
           />
-          <button id="edibtn" class="btn btn-outline-success btn-light btn-sm" data-toggle="modal" data-target="#modalEdit" @click="consultarPostre(i.id)">Editar</button>
+          <ModalRemove :idModal="i.id" />
+          <button id="edibtn" class="btn btn-outline-success btn-light btn-sm" data-toggle="modal" data-target="#modalEdit" @click="consultarPostre(i.id)">
+            <i class="fas fa-edit"></i>
+            Editar
+          </button>
+          <button id="edibtn" class="btn btn-outline-danger btn-light btn-sm" data-toggle="modal" data-target="#modalRemove" @click="consultarPostre(i.id)">
+            <i class="fas fa-trash-alt"></i>
+            borrar
+          </button>
         </tr>
       </table>
     </div>
     <Modal/>
     <div id="sele">
       <div>
-        <button id="agbtn" class="btn btn-outline-primary btn-light" data-toggle="modal" data-target="#exampleModal">Agregar</button>
+        <button id="agbtn" class="btn btn-outline-primary btn-light" data-toggle="modal" data-target="#exampleModal">
+          <i class="fas fa-plus"></i>
+          Agregar
+        </button>
       </div>
       <div class="custom-control custom-switch" v-if="show === true">
         <input type="checkbox" class="custom-control-input" id="customSwitch1">
@@ -41,6 +52,7 @@ import { mapActions, mapState } from 'vuex'
 import Loader from '../components/Loader'
 import Modal from '../components/Modal'
 import ModalEdit from '../components/ModalEdit'
+import ModalRemove from '../components/ModalRemove'
 export default {
   data () {
     return {
@@ -52,7 +64,8 @@ export default {
   components: {
     Loader,
     Modal,
-    ModalEdit
+    ModalEdit,
+    ModalRemove
   },
   computed: {
     ...mapState(['desserts', 'dessertsQ', 'dessertsT', 'header', 'show'])
