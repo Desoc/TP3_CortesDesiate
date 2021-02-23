@@ -1,19 +1,29 @@
 <template>
   <div id="container">
     <Loader v-if="show === false"/>
-    <table v-else>
-      <thead>
-        <th v-for="a in header" :key="a">
+    <div v-else class="table-responsive text-nowrap">
+      <table class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+        <thead>
+          <th v-for="a in header" :key="a">
+              {{ a }}
+          </th>
+        </thead>
+        <tr v-for="i in desserts" :key="i.id">
+          <td v-for="a in i" :key="a">
             {{ a }}
-        </th>
-      </thead>
-      <tr v-for="i in desserts" :key="i.id">
-        <td v-for="j in i" :key="j">
-          {{ j }}
-        </td>
-      </tr>
-    </table>
+          </td>
+          <ModalEdit
+            :idModal="i.id"
+          />
+          <button id="edibtn" class="btn btn-outline-success btn-light btn-sm" data-toggle="modal" data-target="#modalEdit" @click="consultarPostre(i.id)">Editar</button>
+        </tr>
+      </table>
+    </div>
+    <Modal/>
     <div id="sele">
+      <div>
+        <button id="agbtn" class="btn btn-outline-primary btn-light" data-toggle="modal" data-target="#exampleModal">Agregar</button>
+      </div>
       <div class="custom-control custom-switch" v-if="show === true">
         <input type="checkbox" class="custom-control-input" id="customSwitch1">
         <label for="customSwitch1" class="custom-control-label" @click="mostrar">Mostrar/Ocultar filtro</label>
@@ -29,15 +39,20 @@
 <script>
 import { mapActions, mapState } from 'vuex'
 import Loader from '../components/Loader'
+import Modal from '../components/Modal'
+import ModalEdit from '../components/ModalEdit'
 export default {
   data () {
     return {
       selected: '',
-      appear: false
+      appear: false,
+      pa: false
     }
   },
   components: {
-    Loader
+    Loader,
+    Modal,
+    ModalEdit
   },
   computed: {
     ...mapState(['desserts', 'dessertsQ', 'dessertsT', 'header', 'show'])
@@ -46,7 +61,7 @@ export default {
     this.getDesserts()
   },
   methods: {
-    ...mapActions(['getDesserts']),
+    ...mapActions(['getDesserts', 'dessertWithId']),
     mostrar () {
       this.appear = !this.appear
     },
@@ -67,6 +82,13 @@ export default {
     },
     sinFiltro () {
       this.$store.state.desserts = this.$store.state.dessertsSf
+    },
+    cambio () {
+      this.pa = !this.pa
+    },
+    consultarPostre (id) {
+      this.$store.state.dessertId = id
+      this.dessertWithId(id)
     }
   }
 }
@@ -76,15 +98,41 @@ export default {
         border-style: solid;
         border-color: black;
         text-align: center;
+        background-color: ivory;
     }
     table {
-        margin: 10% 15% 2% 30%;
-        background-color: ivory;
+        margin: 10% auto;
+        border-radius: 15px;
+        text-align: center;
     }
     #sele {
       margin-left: 35%;
     }
     #container {
       padding-bottom: 103px;
+    }
+    #edibtn {
+      margin: 1px;
+      padding: 3px;
+    }
+    #agbtn {
+      /* margin-left: 10%; */
+      margin: 0% 0% 2% 10%;
+    }
+    #uli {
+      z-index: -1;
+      background: rgb(0, 0, 1);
+    }
+    @media (max-width: 767px) {
+    table {
+        margin: auto;
+        margin-top: 15px;
+        margin-bottom: 20px;
+        /* background-color: ivory; */
+        border-radius: 15px;
+    }
+    #sele {
+      margin: auto;
+    }
     }
 </style>

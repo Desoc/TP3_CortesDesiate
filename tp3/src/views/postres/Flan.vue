@@ -2,16 +2,18 @@
   <div class="cent container">
       <div class="tarj">
         <div class="borde hist">
-          <h3>Algo de historia</h3>
-          <p>Los registros más antiguos que se conocen sobre lo que dio origen al flan que conocemos hoy en día nos llevan hasta los romanos, cuando ellos comenzaron a domesticar pollos y a incorporar los huevos a diferentes recetas.
-            Más adelante nació una nueva mezcla compuesta de huevos, leche y miel. Durante la Edad Media, este postre se consumía en época de cuaresma. En esos días fue cuando se comenzó a elaborar con azúcar.
-            La primera versión llevaba pimienta, pero este ingrediente se sustituyó más adelante por caramelo, como el que conocemos ahora.
-            El nombre flan viene del siglo VII y es una palabra francesa que significa torta plana. Cuando se comenzó a popularizar el flan, comenzaron a nacer nuevas versiones, dependiendo del país donde se prepara.
-          </p>
+          <h3 class="cent">Algo de historia</h3>
+          <ol>
+            <li>Los registros más antiguos que se conocen sobre lo que dio origen al flan que conocemos hoy en día nos llevan hasta los romanos, cuando ellos comenzaron a domesticar pollos y a incorporar los huevos a diferentes recetas.
+              Más adelante nació una nueva mezcla compuesta de huevos, leche y miel. Durante la Edad Media, este postre se consumía en época de cuaresma. En esos días fue cuando se comenzó a elaborar con azúcar.
+              La primera versión llevaba pimienta, pero este ingrediente se sustituyó más adelante por caramelo, como el que conocemos ahora.
+              El nombre flan viene del siglo VII y es una palabra francesa que significa torta plana. Cuando se comenzó a popularizar el flan, comenzaron a nacer nuevas versiones, dependiendo del país donde se prepara.
+            </li>
+          </ol>
         </div>
         <img src="../../assets/IMAGENES/Flan2.jpg" class="imag">
         <div class="ing borde">
-          <h2>Ingredientes</h2>
+          <h2 class="cent">Ingredientes</h2>
           <ul>
             <li>500 cc de leche</li>
             <li>130 g de azúcar</li>
@@ -22,7 +24,7 @@
         </div>
       </div>
       <div class="borde">
-        <h2>Preparación</h2>
+        <h2 class="cent">Preparación</h2>
         <ol>
           <li>En un recipiente volcar las yemas con el azucar y batir hasta que se integren.</li>
           <li>En otro recipiente mezclar la leche con la esencia de vainilla y luego integrar a las yemas con el azucar.</li>

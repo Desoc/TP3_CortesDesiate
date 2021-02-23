@@ -8,7 +8,7 @@
           </div>
         </div>
         <div class="ing borde">
-          <h2>Ingredientes</h2>
+          <h2 class="cent">Ingredientes</h2>
           <ul>
             <li>¾ taza o 160gr de azúcar</li>
             <li>400 cc de crema de leche o nata</li>
@@ -21,9 +21,9 @@
           </ul>
         </div>
       </div>
-      <div>
-        <ol class="borde">
-          <h2>Preparacion</h2>
+      <div class="borde">
+        <h2 class="cent">Preparacion</h2>
+        <ol>
           <li>Batir las yemas a baño María e incorporar el azúcar y el cognac o amaretto. Batir por 5 minutos aproximadamente. Luego retirar del fuego y batir hasta que las yemas estén a temperatura ambiente. Las yemas van a triplicar su tamaño y por lo tanto va a hacerse una especie de crema.</li>
           <li>Batir el mascarpone para que no tenga grumos. Este es un paso muy importante para la receta.</li>
           <li>Verter las yemas sobre el mascarpone e integrar con movimientos envolventes. Sumar la crema de leche semi batida y mezclar suavemente.</li>

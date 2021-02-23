@@ -3,7 +3,7 @@
       <div class="tarj">
         <img src="../../assets/IMAGENES/isla flotante2.jpg" alt="Isla flotante" class="imag">
         <div class="ing borde">
-          <h2>Ingredientes</h2>
+          <h2 class="cent">Ingredientes</h2>
           <ul>
             <li>3 Unidades Yema</li>
             <li>1/2 Paquete Leche Condensada</li>
@@ -21,7 +21,7 @@
         </div>
       </div>
       <div class="borde">
-        <h2>Preparación</h2>
+        <h2 class="cent">Preparación</h2>
         <ol>
           <li>Para la crema, mezclar las yemas con la Leche Condensada Nestle. Agregar la leche y la esencia. Llevar la mezcla a fuego lento, revolviendo constantemente, hasta que la preparación tome cuerpo.</li>
           <li>Retirar del fuego y pasar por un tamiz para evitar algún grumo. Llevar a la heladera tapada con papel film.</li>

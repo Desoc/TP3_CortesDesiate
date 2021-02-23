@@ -9,13 +9,16 @@ export default new Vuex.Store({
     dessertsSf: [],
     dessertsQ: [],
     dessertsT: [],
-    header: ['Postre', 'Tiempo de preparado', 'Cantidad de ingredientes'],
+    header: ['Codigo', 'Postre', 'Tiempo de preparado', 'Cantidad de ingredientes'],
     show: false,
     hasErrors: false,
     user: {
       token: null,
       userId: null
-    }
+    },
+    newDessert: [],
+    dessertId: [],
+    postreAEditar: []
   },
   mutations: {
     traerPostres (state, elementos) {
@@ -26,6 +29,9 @@ export default new Vuex.Store({
         state.dessertsT = state.desserts.filter(el => parseInt(el.tiempoDePreparado) >= parseInt('70 minutos'))
         state.show = true
       }, 2000)
+    },
+    traerUnPostre (state, elemento) {
+      state.postreAEditar = elemento
     },
     setUser (state, payload) {
       state.user = {
@@ -57,9 +63,6 @@ export default new Vuex.Store({
         .then((res) => res.json())
         .then((elementos) => {
           commit('traerPostres', elementos)
-          for (this.i in elementos) {
-            delete elementos[this.i].id
-          }
         })
         .catch((error) => console.log(error))
     },
@@ -110,6 +113,36 @@ export default new Vuex.Store({
       commit('clearUser')
       localStorage.setItem('token', null)
       localStorage.setItem('userId', null)
+    },
+    addDessert: function (context, payload) {
+      fetch('https://5fcba09751f70e00161f1c5b.mockapi.io/postres', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+        .then((res) => {
+          console.log('Postre agregado', res)
+        })
+        .catch((error) => console(error))
+    },
+    editDessert: function (context, payload) {
+      fetch(`https://5fcba09751f70e00161f1c5b.mockapi.io/postres/${context.state.dessertId}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+        .then((res) => {
+          console.log('Postre editado', res)
+        })
+        .catch((error) => console.log(error))
+    },
+    dessertWithId: function ({ commit, state }) {
+      fetch(`https://5fcba09751f70e00161f1c5b.mockapi.io/postres/${state.dessertId}`)
+        .then((res) => res.json())
+        .then((elemento) => {
+          commit('traerUnPostre', elemento)
+        })
+        .catch((error) => console.log(error))
     }
   }
 })
