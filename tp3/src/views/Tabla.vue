@@ -1,22 +1,24 @@
 <template>
   <div id="container">
     <Loader v-if="show === false"/>
-    <table v-else>
-      <thead>
-        <th v-for="a in header" :key="a">
+    <div v-else class="table-responsive text-nowrap">
+      <table class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+        <thead>
+          <th v-for="a in header" :key="a">
+              {{ a }}
+          </th>
+        </thead>
+        <tr v-for="i in desserts" :key="i.id">
+          <td v-for="a in i" :key="a">
             {{ a }}
-        </th>
-      </thead>
-      <tr v-for="i in desserts" :key="i.id">
-        <td v-for="a in i" :key="a">
-          {{ a }}
-        </td>
-        <ModalEdit
-          :idModal="i.id"
-        />
-        <button id="edibtn" class="btn btn-outline-success btn-light btn-sm" data-toggle="modal" data-target="#modalEdit" @click="consultarPostre(i.id)">Editar</button>
-      </tr>
-    </table>
+          </td>
+          <ModalEdit
+            :idModal="i.id"
+          />
+          <button id="edibtn" class="btn btn-outline-success btn-light btn-sm" data-toggle="modal" data-target="#modalEdit" @click="consultarPostre(i.id)">Editar</button>
+        </tr>
+      </table>
+    </div>
     <Modal/>
     <div id="sele">
       <div>
@@ -99,9 +101,9 @@ export default {
         background-color: ivory;
     }
     table {
-        margin: 10% 15% 2% 30%;
-        /* background-color: ivory; */
+        margin: 10% auto;
         border-radius: 15px;
+        text-align: center;
     }
     #sele {
       margin-left: 35%;
@@ -120,5 +122,17 @@ export default {
     #uli {
       z-index: -1;
       background: rgb(0, 0, 1);
+    }
+    @media (max-width: 767px) {
+    table {
+        margin: auto;
+        margin-top: 15px;
+        margin-bottom: 20px;
+        /* background-color: ivory; */
+        border-radius: 15px;
+    }
+    #sele {
+      margin: auto;
+    }
     }
 </style>

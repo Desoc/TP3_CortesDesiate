@@ -71,7 +71,7 @@ export default {
       } else {
         await this.$store.dispatch('signUp', { email: this.email, password: this.password })
       }
-      this.$router.replace('/tabla')
+      this.$router.replace('/')
     },
     toggleLogins () {
       this.isLogin = !this.isLogin

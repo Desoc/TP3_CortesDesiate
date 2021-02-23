@@ -26,16 +26,10 @@ body {
     margin-right: 20px;
     height: max-content;
 }
-@media (max-width: 767px) {
-    .cent {
-        margin-left: auto;
-        margin-right: auto;
-        }
-}
 .borde {
     border-color: rgb(255, 110, 84);
     border-style: groove;
-    width: fit-content;
+    width: auto;
     border-width: 15px;
     margin-bottom: 15px;
 }
@@ -46,8 +40,8 @@ body {
     margin-bottom: 2%;
 }
 .imag {
-    height: 275px;
-    width: 295px;
+    height: auto;
+    width: 395px;
     border-color: rgb(255, 110, 84);
     border-style: groove;
     border-width: 12px;
@@ -97,7 +91,7 @@ body {
     justify-content: center;
 }
 .mem {
-    padding-top: 35vh;
+    text-align: center;
 }
 .med {
     width: fit-content;
@@ -109,5 +103,20 @@ ul{
 }
 li{
     list-style: none;
+    margin-right: 15px;
+}
+@media (max-width: 767px) {
+    .cent {
+        margin-left: auto;
+        margin-right: auto;
+        }
+    .imag {
+    height: 275px;
+    width: 295px;
+    border-color: rgb(255, 110, 84);
+    border-style: groove;
+    border-width: 12px;
+    margin-top: 2%;
+    }
 }
 </style>
