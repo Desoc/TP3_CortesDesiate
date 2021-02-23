@@ -82,7 +82,7 @@ export default {
 
 <style>
 .logins {
-  margin: 20px auto;
+  margin: 50px auto;
   width: 300px;
 }
 .login-screen {
