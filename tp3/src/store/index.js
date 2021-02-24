@@ -9,7 +9,7 @@ export default new Vuex.Store({
     dessertsSf: [],
     dessertsQ: [],
     dessertsT: [],
-    header: ['Codigo', 'Postre', 'Tiempo de preparado', 'Cantidad de ingredientes'],
+    header: ['Postre', 'Tiempo de preparado', 'Cantidad de ingredientes'],
     show: false,
     hasErrors: false,
     user: {
@@ -143,6 +143,18 @@ export default new Vuex.Store({
           commit('traerUnPostre', elemento)
         })
         .catch((error) => console.log(error))
+    },
+    deleteDessert: function ({ state }) {
+      fetch(`https://5fcba09751f70e00161f1c5b.mockapi.io/postres/${state.dessertId}`, {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' }
+      }).then((res) => {
+        if (res.ok) {
+          console.log('Postre eliminado')
+        } else {
+          console.log('No se pudo eliminar el postre')
+        }
+      })
     }
   }
 })

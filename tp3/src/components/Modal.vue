@@ -28,8 +28,8 @@
               <label for="">Tiempo de preparado</label>
               <input type="text" v-model="newD.cantidadDeIngredientes">
               <label for="">Cantidad de ingredientes</label>
-              <button type="submit" class="btn btn-primary" data-dismiss="modal" @click="la">Guardar nuevo postre</button>
             </form>
+            <button id="btnagregar" type="submit" class="btn btn-primary" data-dismiss="modal" @click="la">Guardar nuevo postre</button>
             <div class="modal-footer">
               <button
                 type="button"
@@ -70,5 +70,15 @@ export default {
   #flexi {
     display: flex;
     flex-direction: column;
+    text-align: center;
+    /* margin: auto auto auto auto; */
+    text-align: center;
+  }
+  #flexi input {
+    margin-left: 100px;
+  }
+  #btnagregar {
+    margin: 7px;
+    margin-left: 140px
   }
 </style>

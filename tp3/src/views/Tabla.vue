@@ -8,13 +8,21 @@
         </th>
       </thead>
       <tr v-for="i in desserts" :key="i.id">
-        <td v-for="a in i" :key="a">
-          {{ a }}
+        <td>
+          {{ i.postre }}
+        </td>
+        <td>
+          {{ i.tiempoDePreparado }}
+        </td>
+        <td>
+          {{ i.cantidadDeIngredientes }}
         </td>
         <ModalEdit
           :idModal="i.id"
         />
+        <ModalBye/>
         <button id="edibtn" class="btn btn-outline-success btn-light btn-sm" data-toggle="modal" data-target="#modalEdit" @click="consultarPostre(i.id)">Editar</button>
+        <button id="borrbtn" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalDelete" @click="consultarPostre(i.id)">Eliminar</button>
       </tr>
     </table>
     <Modal/>
@@ -39,6 +47,7 @@ import { mapActions, mapState } from 'vuex'
 import Loader from '../components/Loader'
 import Modal from '../components/Modal'
 import ModalEdit from '../components/ModalEdit'
+import ModalBye from '../components/ModalBye'
 export default {
   data () {
     return {
@@ -50,7 +59,8 @@ export default {
   components: {
     Loader,
     Modal,
-    ModalEdit
+    ModalEdit,
+    ModalBye
   },
   computed: {
     ...mapState(['desserts', 'dessertsQ', 'dessertsT', 'header', 'show'])
@@ -94,14 +104,13 @@ export default {
 <style lang="css">
     td, th{
         border-style: solid;
-        border-color: black;
-        text-align: center;
+        border-color: rgb(255, 203, 92);
         background-color: ivory;
     }
     table {
         margin: 10% 15% 2% 30%;
-        /* background-color: ivory; */
         border-radius: 15px;
+        text-align: center;
     }
     #sele {
       margin-left: 35%;
@@ -109,7 +118,7 @@ export default {
     #container {
       padding-bottom: 103px;
     }
-    #edibtn {
+    #edibtn, #borrbtn {
       margin: 1px;
       padding: 3px;
     }

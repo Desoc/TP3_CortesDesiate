@@ -28,8 +28,8 @@
               <label for="">Tiempo de preparado</label>
               <input type="text" v-model="postreAEditar.cantidadDeIngredientes"/>
               <label for="">Cantidad de ingredientes</label>
-              <button type="button" class="btn btn-primary" data-dismiss="modal" @click="edith">Editar postre</button>
             </div>
+            <button id="btneditar" type="button" class="btn btn-primary" data-dismiss="modal" @click="edith">Editar postre</button>
           </div>
           <div class="modal-footer">
             <button
@@ -52,21 +52,25 @@ export default {
     ...mapState(['postreAEditar'])
   },
   methods: {
-    ...mapActions(['editDessert']),
+    ...mapActions(['editDessert', 'getDesserts']),
     edith () {
       this.editDessert({
         postre: this.postreAEditar.postre,
         tiempoDePreparado: this.postreAEditar.tiempoDePreparado,
         cantidadDeIngredientes: this.postreAEditar.cantidadDeIngredientes
       })
+      this.getDesserts()
     }
   }
 }
 </script>
 <style>
-  #modalE {
+  #modalE input {
     display: flex;
     flex-direction: column;
     margin: auto auto auto 100px;
+  }
+  #btneditar {
+    margin: 7px
   }
 </style>
