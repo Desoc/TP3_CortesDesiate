@@ -4,7 +4,7 @@
       <div class="tarj">
         <img src="../../assets/IMAGENES/chocotorta2.jpg" class="imag" />
         <div class="ing borde">
-          <h2>Ingredientes</h2>
+          <h2 class="cent">Ingredientes</h2>
           <ul>
             <li>1kg de galletitas cuadradas de chocolate</li>
             <li>1kg de dulce de leche repostero</li>
@@ -18,7 +18,7 @@
         </div>
       </div>
       <div class="borde">
-        <h2>Preparación</h2>
+        <h2 class="cent">Preparación</h2>
         <ol>
           <li>
             Mojar las galletitas en el café preparado e ir colocándolas una al

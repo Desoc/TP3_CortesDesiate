@@ -1,10 +1,17 @@
 <template>
   <div id="container">
     <Loader v-if="show === false"/>
-    <table v-else>
-      <thead>
-        <th v-for="a in header" :key="a">
+    <div v-else class="table-responsive text-nowrap">
+      <table class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+        <thead>
+          <th v-for="a in header" :key="a">
+              {{ a }}
+          </th>
+        </thead>
+        <tr v-for="i in desserts" :key="i.id">
+          <td v-for="a in i" :key="a">
             {{ a }}
+<<<<<<< HEAD
         </th>
       </thead>
       <tr v-for="i in desserts" :key="i.id">
@@ -25,10 +32,31 @@
         <button id="borrbtn" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalDelete" @click="consultarPostre(i.id)">Eliminar</button>
       </tr>
     </table>
+=======
+          </td>
+          <ModalEdit
+            :idModal="i.id"
+          />
+          <ModalRemove :idModal="i.id" />
+          <button id="edibtn" class="btn btn-outline-success btn-light btn-sm" data-toggle="modal" data-target="#modalEdit" @click="consultarPostre(i.id)">
+            <i class="fas fa-edit"></i>
+            Editar
+          </button>
+          <button id="edibtn" class="btn btn-outline-danger btn-light btn-sm" data-toggle="modal" data-target="#modalRemove" @click="consultarPostre(i.id)">
+            <i class="fas fa-trash-alt"></i>
+            borrar
+          </button>
+        </tr>
+      </table>
+    </div>
+>>>>>>> 0664c491fda601fc316f4781ee91e93aafd18c5c
     <Modal/>
     <div id="sele">
       <div>
-        <button id="agbtn" class="btn btn-outline-primary btn-light" data-toggle="modal" data-target="#exampleModal">Agregar</button>
+        <button id="agbtn" class="btn btn-outline-primary btn-light" data-toggle="modal" data-target="#exampleModal">
+          <i class="fas fa-plus"></i>
+          Agregar
+        </button>
       </div>
       <div class="custom-control custom-switch" v-if="show === true">
         <input type="checkbox" class="custom-control-input" id="customSwitch1">
@@ -47,7 +75,11 @@ import { mapActions, mapState } from 'vuex'
 import Loader from '../components/Loader'
 import Modal from '../components/Modal'
 import ModalEdit from '../components/ModalEdit'
+<<<<<<< HEAD
 import ModalBye from '../components/ModalBye'
+=======
+import ModalRemove from '../components/ModalRemove'
+>>>>>>> 0664c491fda601fc316f4781ee91e93aafd18c5c
 export default {
   data () {
     return {
@@ -60,7 +92,11 @@ export default {
     Loader,
     Modal,
     ModalEdit,
+<<<<<<< HEAD
     ModalBye
+=======
+    ModalRemove
+>>>>>>> 0664c491fda601fc316f4781ee91e93aafd18c5c
   },
   computed: {
     ...mapState(['desserts', 'dessertsQ', 'dessertsT', 'header', 'show'])
@@ -108,7 +144,11 @@ export default {
         background-color: ivory;
     }
     table {
+<<<<<<< HEAD
         margin: 10% 15% 2% 30%;
+=======
+        margin: 10% auto;
+>>>>>>> 0664c491fda601fc316f4781ee91e93aafd18c5c
         border-radius: 15px;
         text-align: center;
     }
@@ -129,5 +169,17 @@ export default {
     #uli {
       z-index: -1;
       background: rgb(0, 0, 1);
+    }
+    @media (max-width: 767px) {
+    table {
+        margin: auto;
+        margin-top: 15px;
+        margin-bottom: 20px;
+        /* background-color: ivory; */
+        border-radius: 15px;
+    }
+    #sele {
+      margin: auto;
+    }
     }
 </style>
