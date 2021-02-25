@@ -39,7 +39,7 @@
             >
               Cerrar
             </button>
-            <button type="button" class="btn btn-primary" @click="la">Guardar nuevo postre</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" @click="la">Guardar nuevo postre</button>
           </div>
         </div>
       </div>
@@ -70,5 +70,15 @@ export default {
   #flexi {
     display: flex;
     flex-direction: column;
+    text-align: center;
+    /* margin: auto auto auto auto; */
+    text-align: center;
+  }
+  #flexi input {
+    margin-left: 100px;
+  }
+  #btnagregar {
+    margin: 7px;
+    margin-left: 140px
   }
 </style>

@@ -8,11 +8,19 @@
         </th>
       </thead>
       <tr v-for="i in desserts" :key="i.id">
-        <td v-for="j in i" :key="j">
-          {{ j }}
+        <td>
+          {{ i.postre }}
+        </td>
+        <td>
+          {{ i.tiempoDePreparado }}
+        </td>
+        <td>
+          {{ i.cantidadDeIngredientes }}
         </td>
         <ModalEdit/>
-        <button id="edibtn" class="btn btn-outline-success btn-light btn-sm" data-toggle="modal" data-target="#modalEdit">Editar</button>
+        <ModalBye/>
+        <button id="edibtn" class="btn btn-outline-success btn-light btn-sm" data-toggle="modal" data-target="#modalEdit" @click="consultarPostre(i.id)">Editar</button>
+        <button id="borrbtn" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalDelete" @click="consultarPostre(i.id)">Eliminar</button>
       </tr>
     </table>
     <Modal/>
@@ -37,6 +45,7 @@ import { mapActions, mapState } from 'vuex'
 import Loader from '../components/Loader'
 import Modal from '../components/Modal'
 import ModalEdit from '../components/ModalEdit'
+import ModalBye from '../components/ModalBye'
 export default {
   data () {
     return {
@@ -48,7 +57,8 @@ export default {
   components: {
     Loader,
     Modal,
-    ModalEdit
+    ModalEdit,
+    ModalBye
   },
   computed: {
     ...mapState(['desserts', 'dessertsQ', 'dessertsT', 'header', 'show'])
@@ -57,7 +67,7 @@ export default {
     this.getDesserts()
   },
   methods: {
-    ...mapActions(['getDesserts']),
+    ...mapActions(['getDesserts', 'dessertWithId']),
     mostrar () {
       this.appear = !this.appear
     },
@@ -81,6 +91,10 @@ export default {
     },
     cambio () {
       this.pa = !this.pa
+    },
+    consultarPostre (id) {
+      this.$store.state.dessertId = id
+      this.dessertWithId(id)
     }
   }
 }
@@ -88,14 +102,13 @@ export default {
 <style lang="css">
     td, th{
         border-style: solid;
-        border-color: black;
-        text-align: center;
+        border-color: rgb(255, 203, 92);
         background-color: ivory;
     }
     table {
         margin: 10% 15% 2% 30%;
-        /* background-color: ivory; */
         border-radius: 15px;
+        text-align: center;
     }
     #sele {
       margin-left: 35%;
@@ -103,7 +116,7 @@ export default {
     #container {
       padding-bottom: 103px;
     }
-    #edibtn {
+    #edibtn, #borrbtn {
       margin: 1px;
       padding: 3px;
     }

@@ -9,7 +9,14 @@ import Chocotorta from '../views/postres/Chocotorta.vue'
 import Pastafrola from '../views/postres/Pastafrola.vue'
 import Islaflotante from '../views/postres/Islaflotante.vue'
 import Tabla from '../views/Tabla.vue'
+import Login from '../views/Login.vue'
+import store from '../store'
 
+Vue.directive('focus', {
+  inserted: function (element) {
+    element.focus()
+  }
+})
 Vue.use(VueRouter)
 
 const routes = [
@@ -53,12 +60,26 @@ const routes = [
   {
     path: '/tabla',
     name: 'Tabla',
-    component: Tabla
+    component: Tabla,
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/auth',
+    name: 'auth',
+    component: Login
   }
 ]
 
 const router = new VueRouter({
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  if (to.meta.requiresAuth && !store.getters.isLogged) {
+    next('/auth')
+  } else {
+    next()
+  }
 })
 
 export default router
