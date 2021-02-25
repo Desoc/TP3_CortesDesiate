@@ -1,36 +1,73 @@
 <template>
   <div id="container">
-    <Loader v-if="show === false"/>
-    <table v-else>
-      <thead>
-        <th v-for="a in header" :key="a">
+    <Loader v-if="show === false" />
+    <div v-else class="table-responsive text-nowrap">
+      <table
+        class="table table-striped table-bordered table-sm"
+        cellspacing="0"
+        width="100%"
+      >
+        <thead>
+          <th v-for="a in header" :key="a">
             {{ a }}
-        </th>
-      </thead>
-      <tr v-for="i in desserts" :key="i.id">
-        <td>
-          {{ i.postre }}
-        </td>
-        <td>
-          {{ i.tiempoDePreparado }}
-        </td>
-        <td>
-          {{ i.cantidadDeIngredientes }}
-        </td>
-        <ModalEdit/>
-        <ModalBye/>
-        <button id="edibtn" class="btn btn-outline-success btn-light btn-sm" data-toggle="modal" data-target="#modalEdit" @click="consultarPostre(i.id)">Editar</button>
-        <button id="borrbtn" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalDelete" @click="consultarPostre(i.id)">Eliminar</button>
-      </tr>
-    </table>
-    <Modal/>
+          </th>
+        </thead>
+        <tr v-for="i in desserts" :key="i.id">
+          <td>
+            {{ i.postre }}
+          </td>
+          <td>
+            {{ i.tiempoDePreparado }}
+          </td>
+          <td>
+            {{ i.cantidadDeIngredientes }}
+          </td>
+          <ModalEdit :idModal="i.id" />
+          <ModalBye />
+          <button
+            id="edibtn"
+            class="btn btn-outline-success btn-light btn-sm"
+            data-toggle="modal"
+            data-target="#modalEdit"
+            @click="consultarPostre(i.id)"
+          >
+            Editar
+          </button>
+          <button
+            id="borrbtn"
+            type="button"
+            class="btn btn-danger btn-sm"
+            data-toggle="modal"
+            data-target="#modalDelete"
+            @click="consultarPostre(i.id)"
+          >
+            Eliminar
+          </button>
+        </tr>
+      </table>
+    </div>
+    <Modal />
     <div id="sele">
       <div>
-        <button id="agbtn" class="btn btn-outline-primary btn-light" data-toggle="modal" data-target="#exampleModal">Agregar</button>
+        <button
+          id="agbtn"
+          class="btn btn-outline-primary btn-light"
+          data-toggle="modal"
+          data-target="#exampleModal"
+        >
+          <i class="fas fa-plus"></i>
+          Agregar
+        </button>
       </div>
       <div class="custom-control custom-switch" v-if="show === true">
-        <input type="checkbox" class="custom-control-input" id="customSwitch1">
-        <label for="customSwitch1" class="custom-control-label" @click="mostrar">Mostrar/Ocultar filtro</label>
+        <input
+          type="checkbox"
+          class="custom-control-input"
+          id="customSwitch1"
+        />
+        <label for="customSwitch1" class="custom-control-label" @click="mostrar"
+          >Mostrar/Ocultar filtro</label
+        >
       </div>
       <select v-model="selected" @click="filtro" v-if="appear === true">
         <option>Sin filtro</option>

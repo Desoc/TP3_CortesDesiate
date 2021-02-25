@@ -19,7 +19,7 @@
       </div>
     </div>
     <div class="borde">
-      <h2>Preparación</h2>
+      <h2 class="cent">Preparación</h2>
       <ol>
         <li>
           Colocar en un bol la harina y Maizena previamente tamizados junto a el

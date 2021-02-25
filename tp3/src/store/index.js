@@ -18,7 +18,8 @@ export default new Vuex.Store({
     },
     newDessert: [],
     dessertId: [],
-    postreAEditar: []
+    postreAEditar: [],
+    postreAEliminar: []
   },
   mutations: {
     traerPostres (state, elementos) {
@@ -146,14 +147,14 @@ export default new Vuex.Store({
         })
         .catch((error) => console.log(error))
     },
-    deleteDessert: function ({ context }) {
-      fetch(`https://5fcba09751f70e00161f1c5b.mockapi.io/postres/${context.state.dessertId}`, {
+    deleteDessert: function ({ dispatch, state }) {
+      fetch(`https://5fcba09751f70e00161f1c5b.mockapi.io/postres/${state.dessertId}`, {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' }
       }).then((res) => {
         if (res.ok) {
           console.log('Postre eliminado')
-          context.dispatch('getDesserts')
+          dispatch('getDesserts')
         } else {
           console.log('No se pudo eliminar el postre')
         }
