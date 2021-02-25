@@ -139,11 +139,12 @@ export default {
 <style lang="css">
     td, th{
         border-style: solid;
-        border-color: rgb(255, 203, 92);
+        border-color: black;
+        text-align: center;
         background-color: ivory;
     }
     table {
-        margin: 10% 15% 2% 30%;
+        margin: 10% auto;
         border-radius: 15px;
         text-align: center;
     }
@@ -153,7 +154,7 @@ export default {
     #container {
       padding-bottom: 103px;
     }
-    #edibtn, #borrbtn {
+    #edibtn {
       margin: 1px;
       padding: 3px;
     }
@@ -164,5 +165,17 @@ export default {
     #uli {
       z-index: -1;
       background: rgb(0, 0, 1);
+    }
+    @media (max-width: 767px) {
+    table {
+        margin: auto;
+        margin-top: 15px;
+        margin-bottom: 20px;
+        /* background-color: ivory; */
+        border-radius: 15px;
+    }
+    #sele {
+      margin: auto;
+    }
     }
 </style>
