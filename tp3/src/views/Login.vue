@@ -11,7 +11,7 @@
                 <input class="controls" type="text" id="name" placeholder="Nombre">
               </div>
               <div class="control-group">
-                <input class="controls" type="email" id="email" v-model="email" placeholder="E-mail">
+                <input class="controls" type="email" id="email" v-model="email" placeholder="E-mail" v-focus>
               </div>
               <div class="control-group">
                 <input class="controls" type="password" id="password" v-model="password" placeholder="Password">

@@ -136,35 +136,33 @@ export default {
   }
 }
 </script>
-<style>
-table {
-  width: 600px;
-  margin: 10% 15% 0% 0%;
-  border-radius: 15px;
-  text-align: center;
-}
-#sele {
-  margin-left: 35%;
-}
-#container {
-  padding-bottom: 103px;
-}
-#edibtn,
-#borrbtn {
-  margin: 1px;
-  padding: 3px;
-}
-#agbtn {
-  /* margin-left: 10%; */
-  margin: 0% 0% 2% 10%;
-}
-#uli {
-  z-index: -1;
-  background: rgb(0, 0, 1);
-}
-/* @media (max-width: 767px) { */
-  #sele {
-    margin: auto;
-  }
-/* } */
+<style lang="css">
+    td, th{
+        border-style: solid;
+        border-color: rgb(255, 203, 92);
+        background-color: ivory;
+    }
+    table {
+        margin: 10% 15% 2% 30%;
+        border-radius: 15px;
+        text-align: center;
+    }
+    #sele {
+      margin-left: 35%;
+    }
+    #container {
+      padding-bottom: 103px;
+    }
+    #edibtn, #borrbtn {
+      margin: 1px;
+      padding: 3px;
+    }
+    #agbtn {
+      /* margin-left: 10%; */
+      margin: 0% 0% 2% 10%;
+    }
+    #uli {
+      z-index: -1;
+      background: rgb(0, 0, 1);
+    }
 </style>

@@ -68,7 +68,7 @@ export default {
   #modalE input {
     display: flex;
     flex-direction: column;
-    margin: auto;
+    margin: auto auto auto 100px;
   }
   #btneditar {
     margin: 7px
