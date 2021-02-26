@@ -52,14 +52,13 @@ export default {
     ...mapState(['postreAEditar'])
   },
   methods: {
-    ...mapActions(['editDessert', 'getDesserts']),
+    ...mapActions(['editDessert']),
     edith () {
       this.editDessert({
         postre: this.postreAEditar.postre,
         tiempoDePreparado: this.postreAEditar.tiempoDePreparado,
         cantidadDeIngredientes: this.postreAEditar.cantidadDeIngredientes
       })
-      this.getDesserts()
     }
   }
 }

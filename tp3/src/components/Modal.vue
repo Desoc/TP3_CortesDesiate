@@ -61,7 +61,9 @@ export default {
     ...mapActions(['addDessert', 'getDesserts']),
     la () {
       this.addDessert(this.newD)
-      this.getDesserts()
+      this.newD.postre = ''
+      this.newD.tiempoDePreparado = ''
+      this.newD.cantidadDeIngredientes = ''
     }
   }
 }

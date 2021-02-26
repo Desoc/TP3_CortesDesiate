@@ -22,7 +22,7 @@
           </div>
           <div class="modal-body">
             <div id="modalE">
-              <h4>Esta seguro de que quiere borrar este postre?</h4>
+              <h5>Esta seguro de que quiere borrar este postre?</h5>
             </div>
             <button id="btneditar" type="button" class="btn btn-primary" data-dismiss="modal" @click="deleteD">Si</button>
             <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>

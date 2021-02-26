@@ -3,9 +3,9 @@
     <Loader v-if="show === false" />
     <div v-else class="table-responsive text-nowrap">
       <table
+        id="tablaContainer"
         class="table table-striped table-bordered table-sm"
         cellspacing="0"
-        width="100%"
       >
         <thead>
           <th v-for="a in header" :key="a">
@@ -14,7 +14,7 @@
         </thead>
         <tr v-for="i in desserts" :key="i.id">
           <td>
-            {{ i.postre }}
+            {{ i.postre | enMayuscula }}
           </td>
           <td>
             {{ i.tiempoDePreparado }}
@@ -22,7 +22,7 @@
           <td>
             {{ i.cantidadDeIngredientes }}
           </td>
-          <ModalEdit :idModal="i.id" />
+          <ModalEdit/>
           <ModalBye />
           <button
             id="edibtn"
@@ -59,7 +59,7 @@
           Agregar
         </button>
       </div>
-      <div class="custom-control custom-switch" v-if="show === true">
+      <div id="toggle" class="custom-control custom-switch" v-if="show === true">
         <input
           type="checkbox"
           class="custom-control-input"
@@ -70,7 +70,7 @@
         >
       </div>
       <select v-model="selected" @click="filtro" v-if="appear === true">
-        <option>Sin filtro</option>
+        <!-- <option>Sin filtro</option> -->
         <option>Menos de 5 ingredientes</option>
         <option>Mas de 70 minutos de preparacion</option>
       </select>
@@ -104,17 +104,18 @@ export default {
     this.getDesserts()
   },
   methods: {
-    ...mapActions(['getDesserts', 'dessertWithId']),
+    ...mapActions(['getDesserts', 'dessertWithId', 'editDessert']),
     mostrar () {
       this.appear = !this.appear
+      if (this.appear === false) {
+        this.$store.state.desserts = this.$store.state.dessertsSf
+      }
     },
     filtro () {
       if (this.selected === 'Menos de 5 ingredientes') {
         this.meDcinco()
       } else if (this.selected === 'Mas de 70 minutos de preparacion') {
         this.maDsetenta()
-      } else if (this.selected === 'Sin filtro') {
-        this.sinFiltro()
       }
     },
     meDcinco () {
@@ -123,9 +124,9 @@ export default {
     maDsetenta () {
       this.$store.state.desserts = this.$store.state.dessertsT
     },
-    sinFiltro () {
-      this.$store.state.desserts = this.$store.state.dessertsSf
-    },
+    // sinFiltro () {
+    //   this.$store.state.desserts = this.$store.state.dessertsSf
+    // },
     cambio () {
       this.pa = !this.pa
     },
@@ -143,10 +144,11 @@ export default {
         text-align: center;
         background-color: ivory;
     }
-    table {
-        margin: 10% auto;
+    #tablaContainer {
+        margin: 10% auto 1% 30%;
         border-radius: 15px;
         text-align: center;
+        width: 80px;
     }
     #sele {
       margin-left: 35%;
@@ -154,19 +156,22 @@ export default {
     #container {
       padding-bottom: 103px;
     }
-    #edibtn {
-      margin: 1px;
+    #edibtn, #borrbtn {
+      margin: 3px;
       padding: 3px;
     }
     #agbtn {
       /* margin-left: 10%; */
-      margin: 0% 0% 2% 10%;
+      margin: 0% 0% 2% 12%;
+    }
+    #toggle {
+      margin-left: 7%;
     }
     #uli {
       z-index: -1;
       background: rgb(0, 0, 1);
     }
-    @media (max-width: 767px) {
+    @media (max-width: 750px) {
     table {
         margin: auto;
         margin-top: 15px;

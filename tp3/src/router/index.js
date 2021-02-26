@@ -12,11 +12,6 @@ import Tabla from '../views/Tabla.vue'
 import Login from '../views/Login.vue'
 import store from '../store'
 
-Vue.directive('focus', {
-  inserted: function (element) {
-    element.focus()
-  }
-})
 Vue.use(VueRouter)
 
 const routes = [

@@ -10,6 +10,20 @@ import './assets/fontawesome/css/solid.css'
 
 Vue.config.productionTip = false
 
+Vue.directive('focus', {
+  inserted: function (element) {
+    element.focus()
+  }
+})
+
+Vue.filter('enMayuscula', function (txt) {
+  if (!txt) return ''
+  else {
+    txt = txt.toString()
+    return txt.charAt(0).toUpperCase() + txt.slice(1)
+  }
+})
+
 new Vue({
   router,
   store,
